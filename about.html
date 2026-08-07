@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>North Star Bakery — Contact</title>
+  <title>North Star Bakery — About</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,39 +14,44 @@
       <nav class="main-nav" aria-label="Primary">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
           <li><a href="menu.html">Menu</a></li>
-          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="contact-intro">
-      <h1>Contact Us</h1>
-      <p class="lead">Questions, orders, or pickup details — send us a message.</p>
+    <section class="about-hero">
+      <h1>Our Story</h1>
+      <p class="lead">From a neighborhood oven to your table — we bake with intention and community in mind.</p>
     </section>
 
-    <section class="contact-form">
-      <form action="#" method="post" novalidate>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required />
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required />
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button class="btn-primary" type="submit">Send Message</button>
-      </form>
+    <section class="team">
+      <h2>Meet the Bakers</h2>
+      <div class="team-grid">
+        <div class="card">
+          <h3>Sam — Head Baker</h3>
+          <p>Sam focuses on sourdough and daily breads.</p>
+        </div>
+        <div class="card">
+          <h3>Ava — Pastry Chef</h3>
+          <p>Ava crafts the seasonal tarts and viennoiserie.</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2024 North Star Bakery</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </footer>
 </body>

@@ -1,75 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - North Star Bakery</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>North Star Bakery — Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1 class="site-title">North Star Bakery</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">North Star Bakery</a>
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        <section>
-            <h2>Our Menu</h2>
-            <p>All items are baked fresh daily. Prices and availability may vary. Please call ahead for custom orders.</p>
-        </section>
+  <main class="container">
+    <section class="menu-intro">
+      <h1>Menu</h1>
+      <p class="lead">Browse our breads, pastries, and daily specials.</p>
+    </section>
 
-        <section>
-            <h2>Artisan Bread</h2>
-            <div class="section-grid">
-                <div class="card">
-                    <h3>Sourdough Loaf</h3>
-                    <p><strong>$5.99</strong> - Our signature tangy sourdough made with a 100-year-old starter.</p>
-                </div>
-                <div class="card">
-                    <h3>Whole Grain Bread</h3>
-                    <p><strong>$4.99</strong> - Hearty and nutritious blend of whole grains and seeds.</p>
-                </div>
-                <div class="card">
-                    <h3>Ciabatta</h3>
-                    <p><strong>$4.49</strong> - Light and airy Italian-style bread, perfect for sandwiches.</p>
-                </div>
-            </div>
-        </section>
+    <section class="menu-grid">
+      <article class="menu-card">
+        <h3 class="menu-title">Sourdough Loaf</h3>
+        <p class="menu-desc">Tangy, chewy crumb with a crisp crust.</p>
+        <div class="menu-meta">
+          <span class="price">$6.50</span>
+          <span class="badge">Chef's Special</span>
+        </div>
+      </article>
 
-        <section>
-            <h2>Pastries & Sweets</h2>
-            <div class="section-grid">
-                <div class="card">
-                    <h3>Croissants</h3>
-                    <p><strong>$2.99 each</strong> - Buttery, flaky French croissants (plain, chocolate, or almond).</p>
-                </div>
-                <div class="card">
-                    <h3>Danish Pastries</h3>
-                    <p><strong>$3.49 each</strong> - Seasonal fruit and cheese Danish varieties.</p>
-                </div>
-                <div class="card">
-                    <h3>Cookies & Brownies</h3>
-                    <p><strong>$1.99-$2.99</strong> - Homemade cookies and fudgy brownies.</p>
-                </div>
-            </div>
-        </section>
+      <article class="menu-card">
+        <h3 class="menu-title">Almond Croissant</h3>
+        <p class="menu-desc">Buttery, flaky layers with almond paste.</p>
+        <div class="menu-meta">
+          <span class="price">$4.25</span>
+        </div>
+      </article>
 
-        <section>
-            <h2>Custom Cakes</h2>
-            <p>We create beautiful custom cakes for all occasions. Orders require 48 hours notice. Starting at $35 for a small cake.</p>
-            <p><a href="contact.html">Request a custom cake →</a></p>
-        </section>
-    </main>
+      <article class="menu-card">
+        <h3 class="menu-title">Seasonal Tart</h3>
+        <p class="menu-desc">Rotating fillings — ask about today's flavor.</p>
+        <div class="menu-meta">
+          <span class="price">$5.00</span>
+        </div>
+      </article>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2024 North Star Bakery. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2024 North Star Bakery</p>
+    </div>
+  </footer>
 </body>
 </html>

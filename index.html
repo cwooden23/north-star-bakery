@@ -1,65 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Star Bakery - Artisan Baked Goods</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>North Star Bakery — Home</title>
+
+  <!-- Google Fonts (Playfair Display, Open Sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1 class="site-title">North Star Bakery</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">North Star Bakery</a>
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        <section class="hero">
-            <h2>Welcome to North Star Bakery</h2>
-            <p>Handcrafted baked goods made with love and the finest ingredients. From artisan bread to delicate pastries, we bring warmth and tradition to every loaf.</p>
-        </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title">Fresh from the oven — every day</h1>
+        <p class="hero-lead">Small-batch breads, pastries, and seasonal specials made with care.</p>
+        <p><a class="btn-primary" href="menu.html">View Today's Menu</a></p>
+      </div>
+    </section>
 
-        <section class="featured-products">
-            <h2>Our Specialties</h2>
-            <div class="section-grid">
-                <div class="card">
-                    <h3>Artisan Bread</h3>
-                    <p>Freshly baked sourdough, ciabatta, and whole grain loaves made daily using traditional techniques and organic flour.</p>
-                </div>
-                <div class="card">
-                    <h3>Pastries</h3>
-                    <p>Delicate croissants, Danish pastries, and seasonal fruit tarts crafted by our master pastry chefs.</p>
-                </div>
-                <div class="card">
-                    <h3>Custom Cakes</h3>
-                    <p>Beautiful custom celebration cakes for weddings, birthdays, and special occasions. Let us make your event memorable.</p>
-                </div>
-            </div>
-        </section>
+    <section class="features container">
+      <article class="feature">
+        <h2>Artisan Recipes</h2>
+        <p>Time-tested techniques and local ingredients for dependable flavors.</p>
+      </article>
+      <article class="feature">
+        <h2>Daily Specials</h2>
+        <p>Seasonal items and a rotating pastry selection — highlighted in peach for emphasis.</p>
+      </article>
+      <article class="feature">
+        <h2>Order & Pickup</h2>
+        <p>Simple contact form and clear pickup instructions on the Contact page.</p>
+      </article>
+    </section>
+  </main>
 
-        <section class="about-preview">
-            <h2>About Our Bakery</h2>
-            <p>North Star Bakery has been a beloved fixture in our community since 2015. We believe in sustainable practices, local sourcing, and creating products that bring joy to your table. Every item is baked fresh to order, ensuring the highest quality and flavor.</p>
-            <p><a href="about.html">Learn more about our story →</a></p>
-        </section>
-
-        <section class="cta">
-            <h2>Visit Us Today</h2>
-            <p>Stop by our cozy bakery to experience the aroma of fresh-baked goods and connect with our friendly team.</p>
-            <p><strong>Hours:</strong> Monday - Saturday, 7am - 6pm | Sunday, 8am - 4pm</p>
-            <p><strong>Address:</strong> 123 Main Street, Our Town, ST 12345</p>
-            <p><a href="contact.html">Get in Touch</a></p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 North Star Bakery. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2024 North Star Bakery</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
