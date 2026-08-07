@@ -1,1 +1,246 @@
 # north-star-bakery
+/* ==========================================================================
+   1. GLOBAL STYLES & FONTS
+   ========================================================================== */
+@import url('https://googleapis.com');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFF8F0; /* Cream background */
+  color: #2F2A26;           /* Charcoal body text */
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY HIERARCHY
+   ========================================================================== */
+h1, h2, h3, .site-title {
+  font-family: 'Playfair Display', serif;
+  color: #6B3E26; /* Dark Brown headings */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid #D88C5A; /* Peach underline accent */
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION (Flexbox)
+   ========================================================================== */
+header {
+  background-color: #FFF8F0;
+  border-bottom: 3px solid #6B3E26;
+  padding: 1.5rem 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+header img {
+  max-height: 80px;
+  width: auto;
+}
+
+.site-title {
+  font-size: 2.25rem;
+  margin-bottom: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #6B3E26;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, 
+nav a:focus {
+  color: #D88C5A; /* Peach highlight on hover */
+}
+
+/* ==========================================================================
+   4. MAIN CONTENT & MEDIA ELEMENTS
+   ========================================================================== */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 10%;
+}
+
+/* Hide duplicate site title inside main if it breaks layout design */
+main .site-title {
+  display: none; 
+}
+
+img, picture img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  border: 1px solid #6B3E26;
+}
+
+figure {
+  margin: 2rem 0;
+  background-color: #eaddd3; /* Soft inner tone layout wrap */
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 5px solid #D88C5A;
+}
+
+figure img {
+  margin-top: 0;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #2F2A26;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+audio {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem 0 2rem 0;
+}
+
+/* ==========================================================================
+   5. CONTACT FORM STYLING (The Design Challenge Fix)
+   ========================================================================== */
+form {
+  background-color: #FFF8F0;
+  border: 2px solid #6B3E26;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+fieldset {
+  border: 1px solid #D88C5A;
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+legend {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #6B3E26;
+  padding: 0 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2F2A26;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #6B3E26;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  background-color: #FFF;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #D88C5A; /* Peach active focus boundary */
+}
+
+button[type="submit"] {
+  background-color: #6B3E26;
+  color: #FFF8F0;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #D88C5A; /* Changes to Peach on hover */
+}
+
+/* ==========================================================================
+   6. FOOTER STYLING
+   ========================================================================== */
+footer {
+  background-color: #2F2A26; /* Charcoal background */
+  color: #FFF8F0;            /* Cream text */
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE DESIGN (Media Query)
+   ========================================================================== */
+@media (max-width: 600px) {
+  header {
+    padding: 1rem 5%;
+  }
+
+  nav ul {
+    flex-direction: column; /* Vertical alignment stack for tiny touch screens */
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  main {
+    padding: 0 5%; /* Tightens side padding for screen efficiency */
+    margin: 1rem auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
