@@ -1,27 +1,338 @@
-name: Deploy to GitHub Pages
+/* =========================================================
+   North Star Bakery — style.css
+   Mobile-first stylesheet shared by all pages
+   ========================================================= */
 
-on:
-  push:
-    branches:
-      - main
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+/* ---------- Design tokens ---------- */
+:root {
+  --color-cream: #FBF3E7;      /* page background */
+  --color-cream-soft: #F4E8D8; /* card / section background */
+  --color-brown: #5C3A21;      /* primary text, headings */
+  --color-terracotta: #C1683B; /* accent, links, buttons */
+  --color-terracotta-dark: #A6532B; /* hover state */
+  --color-charcoal: #2E2118;   /* footer, high-contrast text */
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 2.75rem;
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './'
+  --radius: 10px;
+  --max-width: 960px;
+}
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+/* ---------- Reset & base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--color-brown);
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-terracotta);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+p {
+  margin: 0 0 var(--space-sm) 0;
+  max-width: 65ch;
+}
+
+a {
+  color: var(--color-terracotta-dark);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+/* ---------- Layout wrapper ---------- */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-sm) var(--space-lg);
+}
+
+/* ---------- Header (mobile-first: stacked & centered) ---------- */
+header {
+  background-color: var(--color-cream-soft);
+  border-bottom: 3px solid var(--color-terracotta);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+header img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid var(--color-terracotta);
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-xs) 0 0 0;
+  padding: 0;
+}
+
+nav a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-brown);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--color-terracotta);
+  color: var(--color-cream);
+  text-decoration: none;
+}
+
+/* ---------- Reusable content sections ---------- */
+section,
+.content-block {
+  margin-bottom: var(--space-md);
+}
+
+/* Product / info cards laid out with Flexbox */
+.card-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.card {
+  background-color: var(--color-cream-soft);
+  border: 1px solid var(--color-terracotta);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* Figure styling */
+figure {
+  margin: var(--space-md) 0;
+  background-color: var(--color-cream-soft);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-terracotta);
+}
+
+figcaption {
+  margin-top: var(--space-xs);
+  font-style: italic;
+  color: var(--color-brown);
+  font-size: 0.95rem;
+}
+
+/* Picture / responsive feature image */
+picture img {
+  width: 100%;
+}
+
+/* Audio / video */
+audio,
+video {
+  width: 100%;
+  margin: var(--space-sm) 0;
+}
+
+/* ---------- Forms (contact page) ---------- */
+fieldset {
+  border: 2px solid var(--color-terracotta);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  margin: 0 0 var(--space-md) 0;
+  background-color: var(--color-cream-soft);
+}
+
+legend {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-brown);
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.form-group {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--color-brown);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-brown);
+  border-radius: var(--radius);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--color-terracotta);
+  outline-offset: 1px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--color-brown);
+  margin-top: 0.2rem;
+}
+
+button,
+.btn {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--color-terracotta);
+  color: var(--color-cream);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--color-terracotta-dark);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  text-align: center;
+  padding: var(--space-sm);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+  max-width: none;
+}
+
+/* =========================================================
+   Responsive layout: larger screens
+   ========================================================= */
+@media (min-width: 700px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  header img {
+    width: 56px;
+    height: 56px;
+  }
+
+  nav ul {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Product / info cards move into a row layout */
+  .card-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1 1 0;
+    min-width: 240px;
+  }
+
+  /* Two-column layout for form + location info on contact page */
+  .contact-layout {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .contact-layout form {
+    flex: 2;
+  }
+
+  .contact-layout .location-info {
+    flex: 1;
+  }
+}
