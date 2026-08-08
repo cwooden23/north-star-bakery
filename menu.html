@@ -21,15 +21,17 @@
       </nav>
     </div>
   </header>
-
   <main class="container">
     <section class="menu-intro">
       <h1>Menu</h1>
-      <p class="lead">Browse our breads, pastries, and daily specials.</p>
+      <p class="lead">Browse our breads, pastries, and daily specials. Tap the heart on any item to save it as a favorite.</p>
+      <p id="favorites-summary" class="favorites-summary" aria-live="polite"></p>
     </section>
-
     <section class="menu-grid">
-      <article class="menu-card">
+      <article class="menu-card" data-item-id="sourdough">
+        <button class="favorite-btn" type="button" aria-pressed="false" aria-label="Add Sourdough Loaf to favorites">
+          <span class="heart-icon" aria-hidden="true">♡</span>
+        </button>
         <h3 class="menu-title">Sourdough Loaf</h3>
         <p class="menu-desc">Tangy, chewy crumb with a crisp crust.</p>
         <div class="menu-meta">
@@ -37,16 +39,20 @@
           <span class="badge">Chef's Special</span>
         </div>
       </article>
-
-      <article class="menu-card">
+      <article class="menu-card" data-item-id="croissant">
+        <button class="favorite-btn" type="button" aria-pressed="false" aria-label="Add Almond Croissant to favorites">
+          <span class="heart-icon" aria-hidden="true">♡</span>
+        </button>
         <h3 class="menu-title">Almond Croissant</h3>
         <p class="menu-desc">Buttery, flaky layers with almond paste.</p>
         <div class="menu-meta">
           <span class="price">$4.25</span>
         </div>
       </article>
-
-      <article class="menu-card">
+      <article class="menu-card" data-item-id="tart">
+        <button class="favorite-btn" type="button" aria-pressed="false" aria-label="Add Seasonal Tart to favorites">
+          <span class="heart-icon" aria-hidden="true">♡</span>
+        </button>
         <h3 class="menu-title">Seasonal Tart</h3>
         <p class="menu-desc">Rotating fillings — ask about today's flavor.</p>
         <div class="menu-meta">
@@ -55,11 +61,11 @@
       </article>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2024 North Star Bakery</p>
     </div>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
