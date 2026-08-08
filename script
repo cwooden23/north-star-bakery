@@ -1,0 +1,195 @@
+/* ============================================================
+   North Star Bakery — script.js
+   Two features:
+   1. Menu favorites (heart buttons) — saved with localStorage
+   2. Contact form validation — inline error feedback
+   ============================================================ */
+
+/* ---------- Shared data ---------- */
+
+// Array of objects describing each menu item. Used to look up
+// display names when building the favorites summary text.
+const MENU_ITEMS = [
+  { id: "sourdough", name: "Sourdough Loaf" },
+  { id: "croissant", name: "Almond Croissant" },
+  { id: "tart", name: "Seasonal Tart" }
+];
+
+const FAVORITES_STORAGE_KEY = "northStarBakeryFavorites";
+
+/* ============================================================
+   FEATURE 1: Menu favorites (localStorage)
+   ============================================================ */
+
+// Reads the saved favorites array out of localStorage.
+// Returns an empty array if nothing has been saved yet.
+function loadFavorites() {
+  const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+  return stored ? JSON.parse(stored) : [];
+}
+
+// Writes the current favorites array back to localStorage.
+function saveFavorites(favorites) {
+  localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+}
+
+// Adds or removes an item id from the favorites array.
+// Returns the updated array.
+function toggleFavorite(itemId, favorites) {
+  const index = favorites.indexOf(itemId);
+  if (index === -1) {
+    favorites.push(itemId);
+  } else {
+    favorites.splice(index, 1);
+  }
+  return favorites;
+}
+
+// Updates a single heart button's icon, label, and pressed state.
+function updateFavoriteButton(button, isFavorited) {
+  const icon = button.querySelector(".heart-icon");
+  icon.textContent = isFavorited ? "♥" : "♡";
+  button.setAttribute("aria-pressed", String(isFavorited));
+  button.classList.toggle("is-favorited", isFavorited);
+}
+
+// Updates the summary line at the top of the menu page so users
+// can see their saved favorites at a glance.
+function updateFavoritesSummary(favorites) {
+  const summary = document.getElementById("favorites-summary");
+  if (!summary) return;
+
+  if (favorites.length === 0) {
+    summary.textContent = "You haven't saved any favorites yet — tap a heart to save an item.";
+    return;
+  }
+
+  const names = favorites
+    .map((id) => {
+      const item = MENU_ITEMS.find((menuItem) => menuItem.id === id);
+      return item ? item.name : null;
+    })
+    .filter(Boolean);
+
+  summary.textContent = `Your favorites (${names.length}): ${names.join(", ")}`;
+}
+
+// Wires up every heart button on the menu page: restores saved
+// state on load, and toggles + saves + re-renders on click.
+function initFavorites() {
+  const favoriteButtons = document.querySelectorAll(".favorite-btn");
+  if (favoriteButtons.length === 0) return; // not on the menu page
+
+  let favorites = loadFavorites();
+
+  favoriteButtons.forEach((button) => {
+    const card = button.closest(".menu-card");
+    const itemId = card.dataset.itemId;
+
+    updateFavoriteButton(button, favorites.includes(itemId));
+
+    button.addEventListener("click", () => {
+      favorites = toggleFavorite(itemId, favorites);
+      saveFavorites(favorites);
+      updateFavoriteButton(button, favorites.includes(itemId));
+      updateFavoritesSummary(favorites);
+    });
+  });
+
+  updateFavoritesSummary(favorites);
+}
+
+/* ============================================================
+   FEATURE 2: Contact form validation
+   ============================================================ */
+
+function validateName(value) {
+  if (value.trim() === "") return "Please enter your name.";
+  if (value.trim().length < 2) return "Name must be at least 2 characters.";
+  return "";
+}
+
+function validateEmail(value) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (value.trim() === "") return "Please enter your email address.";
+  if (!emailPattern.test(value.trim())) {
+    return "Please enter a valid email address (e.g. name@example.com).";
+  }
+  return "";
+}
+
+function validateMessage(value) {
+  if (value.trim() === "") return "Please enter a message.";
+  if (value.trim().length < 10) return "Message must be at least 10 characters.";
+  return "";
+}
+
+// Object mapping each field's id to its validation function,
+// so the submit handler can loop over fields generically.
+const FIELD_VALIDATORS = {
+  name: validateName,
+  email: validateEmail,
+  message: validateMessage
+};
+
+// Displays (or clears) the error message for one field.
+function showFieldError(input, message) {
+  const errorEl = document.getElementById(`${input.id}-error`);
+  if (errorEl) errorEl.textContent = message;
+  input.setAttribute("aria-invalid", message ? "true" : "false");
+}
+
+// Runs one field's validator and displays the result.
+// Returns true if the field is valid.
+function validateField(input) {
+  const validator = FIELD_VALIDATORS[input.id];
+  if (!validator) return true;
+  const message = validator(input.value);
+  showFieldError(input, message);
+  return message === "";
+}
+
+// Wires up live (on-blur) validation and submit-time validation
+// for the contact form.
+function initContactForm() {
+  const form = document.querySelector(".contact-form form");
+  if (!form) return; // not on the contact page
+
+  const fields = [
+    document.getElementById("name"),
+    document.getElementById("email"),
+    document.getElementById("message")
+  ];
+
+  fields.forEach((input) => {
+    input.addEventListener("blur", () => validateField(input));
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // .map then every() so ALL fields get checked (and show
+    // their errors) rather than stopping at the first invalid one.
+    const results = fields.map((input) => validateField(input));
+    const isValid = results.every((valid) => valid === true);
+
+    const successEl = document.getElementById("form-success");
+
+    if (isValid) {
+      form.reset();
+      fields.forEach((input) => showFieldError(input, ""));
+      if (successEl) successEl.textContent = "Thanks! Your message has been sent.";
+    } else if (successEl) {
+      successEl.textContent = "";
+    }
+  });
+}
+
+/* ============================================================
+   Run everything once the page is ready
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initFavorites();
+  initContactForm();
+});
